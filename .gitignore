@@ -1,0 +1,17 @@
+.idea
+.vscode
+.local/*
+mysql/*
+!mysql/.gitkeep
+
+/src/node_modules
+/src/public/hot
+/src/public/storage
+/src/storage/*.key
+/src/vendor
+/src/.phpunit.result.cache
+/src/docker-compose.override.yml
+/src/Homestead.json
+/src/Homestead.yaml
+/src/npm-debug.log
+/src/yarn-error.log
