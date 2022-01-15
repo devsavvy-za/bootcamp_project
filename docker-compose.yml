@@ -23,6 +23,20 @@ services:
     networks:
       - laravel
 
+  php:
+    container_name: php
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - ./src:/var/www/html:delegated
+      - ./dockerfiles/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+    networks:
+      - laravel
+      
   mysql:
     container_name: mysql
     build:
@@ -54,20 +68,6 @@ services:
     restart: always
     ports:
       - 8081:80
-    networks:
-      - laravel
-
-  php:
-    container_name: php
-    build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    volumes:
-      - ./src:/var/www/html:delegated
-      - ./dockerfiles/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
     networks:
       - laravel
 
