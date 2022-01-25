@@ -1,2 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `bootcamp_project`;
+CREATE DATABASE IF NOT EXISTS `bootcamp_project_import`;
+
 GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'%';
 FLUSH PRIVILEGES;

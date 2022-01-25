@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OrderFactory extends Factory
+class InvoiceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -23,7 +23,7 @@ class OrderFactory extends Factory
 
         return [
             'user_id' => $user->id,
-            'date' => $this->faker->date(date("Y-m-d", strtotime("-6 months")), 'now'),
+            'date' => date("Y-m-d", strtotime("-".rand(1, 100)." days")),
             'cancelled_at' => $cancelled_at,
             'paid_at' => $paid_at,
             'status' => 'enabled',

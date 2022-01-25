@@ -31,11 +31,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Orders.
+     * Invoices.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orders()
+    public function invoices()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Invoice::class);
     }
 }

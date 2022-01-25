@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class OrderItem extends Model
+class InvoiceItem extends Model
 {
     use HasFactory, SoftDeletes;
 
     // set
-    protected $table = 'order_item';
-    protected $fillable = ['order_id', 'product_id', 'amount', 'status'];
+    protected $table = 'invoice_item';
+    protected $fillable = ['invoice_id', 'product_id', 'amount', 'status'];
 
 
     /**
-     * Order.
+     * Invoice.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function order()
+    public function invoice()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Invoice::class);
     }
 }

@@ -17,6 +17,7 @@ Common Commands:
     // utility containers
     `docker-compose run --rm composer update`
     `docker-compose run --rm artisan config:clear`
+    `docker-compose run –rm artisan migrate:fresh –seed`
     `docker-compose run --rm npm install`
     `docker-compose run --rm npm run prod`
     

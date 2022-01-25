@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+class Invoice extends Model
 {
     use HasFactory, SoftDeletes;
 
     // set
-    protected $table = 'order';
+    protected $table = 'invoice';
     protected $fillable = ['user_id', 'date', 'cancelled_at', 'paid_at', 'status'];
 
 
@@ -25,11 +25,11 @@ class Order extends Model
     }
 
     /**
-     * Order items.
+     * Invoice items.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function order_items()
+    public function invoice_items()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(InvoiceItem::class);
     }
 }
