@@ -9,8 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
@@ -19,6 +20,18 @@ class User extends Authenticatable
     protected $fillable = ['user_role_id', 'first_name', 'last_name', 'mobile_number', 'email', 'password', 'status'];
     protected $hidden = ['password','remember_token'];
     protected $casts = ['email_verified_at' => 'datetime'];
+
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
 
 
     /**
@@ -37,5 +50,21 @@ class User extends Authenticatable
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     *  Get the JWT key.
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     *  Get the JWT custom claims.
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
